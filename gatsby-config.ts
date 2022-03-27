@@ -6,38 +6,6 @@ const config: GatsbyConfig = {
     siteUrl: `https://batukan.me`
   },
   plugins: [
-    "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-plugin-sass",
-      options: {
-        sassOptions: {
-          indentedSyntax: true
-        },
-      },
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        "name": "images",
-        "path": "./src/images/"
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        "name": "uploads",
-        "path": "./static/images/"
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        "name": "pages",
-        "path": "./src/pages/"
-      }
-    },
-    "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
@@ -68,6 +36,37 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-plugin-sass",
+      options: {
+        sassOptions: {
+          indentedSyntax: true
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "images",
+        "path": "./src/img/"
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "uploads",
+        "path": "./static/img/"
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        "name": "pages",
+        "path": "./src/pages/"
+      }
+    },
+    "gatsby-plugin-mdx",
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {
@@ -78,7 +77,7 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
+        modulePath: `./src/cms/cms.js`,
       },
     },
     "gatsby-plugin-netlify",
