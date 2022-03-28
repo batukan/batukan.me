@@ -92,6 +92,12 @@ const config: GatsbyConfig = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `batukan`
+      }
+    }
   ]
 };
 

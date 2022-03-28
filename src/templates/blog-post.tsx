@@ -4,8 +4,10 @@ import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
 import { HTMLContent, TextContent } from "../components/Content";
+import { Disqus } from 'gatsby-plugin-disqus';
 
 interface BlogPostTemplateProps {
+  id: string;
   content: string;
   contentComponent?: React.ComponentType<any>;
   description?: string;
@@ -25,7 +27,6 @@ export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {props.title}
             </h1>
-            <p>{props.description}</p>
             <PostContent content={props.content} />
             {props.tags && props.tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -39,6 +40,13 @@ export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
                 </ul>
               </div>
             ) : null}
+            <Disqus
+              config={{
+                url: `https://batukan.me${location.pathname}`,
+                identifier: props.id,
+                title: props.title
+              }}
+            />
           </div>
         </div>
       </div>
@@ -46,12 +54,13 @@ export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
   );
 };
 
-export default function BlogPost ({ data }) {
+export default function BlogPost({ data }) {
   const post = data.markdownRemark;
 
   return (
     <Layout>
       <BlogPostTemplate
+        id={post.id}
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
@@ -62,7 +71,7 @@ export default function BlogPost ({ data }) {
               name="description"
               content={`${post.frontmatter.description}`}
             />
-            <meta name="author" content="Emre Batukan"/>
+            <meta name="author" content="Emre Batukan" />
           </Helmet>
         }
         tags={post.frontmatter.tags}
