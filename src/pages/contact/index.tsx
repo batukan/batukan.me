@@ -38,7 +38,7 @@ export default class Index extends React.Component {
       <Layout>
         <section className="section">
           <div className="container">
-            <div className="content">
+            <div className="content notification">
               <h1>Contact</h1>
               <form
                 name="contact"
@@ -90,7 +90,7 @@ export default class Index extends React.Component {
                   <label className="label" htmlFor={"message"}>
                     Message
                   </label>
-                  <div className="control">
+                  <div className="control has-icons-left has-icons-right">
                     <textarea
                       className="textarea"
                       name={"message"}
@@ -106,8 +106,6 @@ export default class Index extends React.Component {
                   </button>
                 </div>
               </form>
-              <br/>
-              <div>You can also contact me by sending an email to <b>es.ozbek@outlook.com</b>.</div>
             </div>
           </div>
         </section>
