@@ -14,6 +14,7 @@ interface BlogPostTemplateProps {
   title?: string;
   helmet?: any;
   tags?: string[];
+  slug: string;
 }
 export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
   const PostContent = props.contentComponent || TextContent;
@@ -42,7 +43,7 @@ export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
             ) : null}
             <Disqus
               config={{
-                url: `https://batukan.me${location.pathname}`,
+                url: `https://batukan.me/blog/${props.slug}`,
                 identifier: props.id,
                 title: props.title
               }}
@@ -61,6 +62,7 @@ export default function BlogPost({ data }) {
     <Layout>
       <BlogPostTemplate
         id={post.id}
+        slug={data.fields.slug}
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
@@ -86,6 +88,9 @@ export const pageQuery = graphql`
     markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
