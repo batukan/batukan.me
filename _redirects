@@ -1,0 +1,2 @@
+# Redirect netlify app URL
+https://batukan.netlify.app/* https://batukan.me:splat 301!

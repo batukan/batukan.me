@@ -2,8 +2,8 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Emre Batukan`,
-    siteUrl: `https://batukan.me`
+    title: `Enes Sadık Özbek`,
+    siteUrl: `https://esozbek.me`
   },
   plugins: [
     "gatsby-plugin-sharp",
@@ -49,14 +49,14 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "images",
-        "path": "./src/img/"
+        "path": "./src/images/"
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "uploads",
-        "path": "./static/img/"
+        "path": "./static/images/"
       }
     },
     {
@@ -66,6 +66,7 @@ const config: GatsbyConfig = {
         "path": "./src/pages/"
       }
     },
+    "gatsby-theme-material-ui",
     "gatsby-plugin-mdx",
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
@@ -77,11 +78,20 @@ const config: GatsbyConfig = {
     {
       resolve: "gatsby-plugin-netlify-cms",
       options: {
-        modulePath: `./src/cms/cms.js`,
+        modulePath: `./src/cms/cms.ts`,
       },
     },
     "gatsby-plugin-netlify",
-    "gatsby-plugin-sitemap"
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        output: `/sitemap.xml`,
+        exclude: [
+          `/404`,
+          `/admin`
+        ],
+      },
+    },
   ]
 };
 
