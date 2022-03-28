@@ -62,7 +62,7 @@ export default function BlogPost({ data }) {
     <Layout>
       <BlogPostTemplate
         id={post.id}
-        slug={data.fields.slug}
+        slug={post.fields.slug}
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
