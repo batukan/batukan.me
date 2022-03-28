@@ -97,6 +97,12 @@ const config: GatsbyConfig = {
       options: {
         shortname: `batukan`
       }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "G-LXGSX8N3GT"
+      }
     }
   ]
 };
