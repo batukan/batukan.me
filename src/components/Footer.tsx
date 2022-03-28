@@ -47,16 +47,14 @@ export default function Footer() {
                                 <img
                                     src={github}
                                     alt="GitHub"
-                                    style={{ width: "1em", height: "1em" }}
+                                    style={{ width: "3em", height: "3em" }}
                                 />
                             </a>
-                        </div>
-                        <div className="column is-4 social">
                             <a title="LinkedIn" href="https://www.linkedin.com/in/emrebatukan/">
                                 <img
                                     src={linkedin}
                                     alt="LinkedIn"
-                                    style={{ width: "1em", height: "1em" }}
+                                    style={{ width: "3em", height: "3em" }}
                                 />
                             </a>
                         </div>

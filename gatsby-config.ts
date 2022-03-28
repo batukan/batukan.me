@@ -2,8 +2,8 @@ import type { GatsbyConfig } from "gatsby";
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `Enes Sadık Özbek`,
-    siteUrl: `https://esozbek.me`
+    title: `Emre Batukan`,
+    siteUrl: `https://batukan.me`
   },
   plugins: [
     "gatsby-plugin-sharp",

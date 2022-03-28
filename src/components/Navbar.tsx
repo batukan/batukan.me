@@ -42,7 +42,8 @@ export default function Navbar() {
               style={{ fontSize: "1.5rem", fontFamily: "monaco,inconsolata,consolas,Courier,monospace" }}>
               batukan.me
             </Link>
-
+          </div>
+          <div className="navbar-end has-text-centered">
             <Link className="navbar-item" to="/blog">
               Blog
             </Link>
@@ -52,18 +53,6 @@ export default function Navbar() {
             <Link className="navbar-item" to="/contact">
               Contact
             </Link>
-          </div>
-          <div className="navbar-end has-text-centered">
-            <a
-              className="navbar-item"
-              href="https://github.com/Trojaner/esozbek.me"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="icon">
-                <img src={github} alt="Github" />
-              </span>
-            </a>
           </div>
         </div>
       </div>

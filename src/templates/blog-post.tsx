@@ -57,12 +57,12 @@ export default function BlogPost ({ data }) {
         description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.frontmatter.title}`} - Enes Sadık Özbek</title>
+            <title>{`${post.frontmatter.title}`} - Emre Batukan</title>
             <meta
               name="description"
               content={`${post.frontmatter.description}`}
             />
-            <meta name="author" content="Enes Sadık Özbek"/>
+            <meta name="author" content="Emre Batukan"/>
           </Helmet>
         }
         tags={post.frontmatter.tags}
