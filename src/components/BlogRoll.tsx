@@ -2,7 +2,6 @@ import React from 'react'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import moment from 'moment';
-import { CommentCount } from 'gatsby-plugin-disqus'
 
 export function BlogPostPreview(props: any) {
     const { post } = props; 
@@ -32,16 +31,6 @@ export function BlogPostPreview(props: any) {
                         <span> &nbsp; </span>
                         <span className="subtitle is-size-6 is-block">
                             {moment(post.frontmatter.date).format('LL')}
-                            &nbsp;
-                            &bull;
-                            &nbsp;
-                            <CommentCount
-                                config={{
-                                    url: `https://batukan.me/blog/${post.fields.slug}`,
-                                    identifier: post.id,
-                                    title: post.frontmatter.title
-                                }}
-                            />
                         </span>
                     </p>
                 </header>

@@ -1,66 +1,52 @@
 import * as React from "react";
 import { Link } from "gatsby";
+import * as style from "./Footer.module.scss";
 
 import github from "../images/social/github.svg";
 import linkedin from "../images/social/linkedin.svg";
 
 export default function Footer() {
     return (
-        <footer className="footer has-background-black has-text-white-ter">
-            <div className="content has-text-centered has-background-black has-text-white-ter">
-                <div className="container has-background-black has-text-white-ter">
-                    <div style={{ maxWidth: "100vw" }} className="columns">
-                        <div className="column is-4">
-                            <section className="menu">
-                                <ul className="menu-list">
-                                    <li>
-                                        <Link to="/" className="navbar-item">
-                                            Home
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="navbar-item" to="/portfolio">
-                                            Portfolio
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </section>
-                        </div>
-                        <div className="column is-4">
-                            <section>
-                                <ul className="menu-list">
-                                    <li>
-                                        <Link className="navbar-item" to="/blog">
-                                            Blog
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className="navbar-item" to="/contact">
-                                            Contact
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </section>
-                        </div>
-                        <div className="column is-4 social">
-                            <a title="GitHub" href="https://github.com/batukan">
-                                <img
-                                    src={github}
-                                    alt="GitHub"
-                                    style={{ width: "3em", height: "3em" }}
-                                />
-                            </a>
-                            <a title="LinkedIn" href="https://www.linkedin.com/in/emrebatukan/">
-                                <img
-                                    src={linkedin}
-                                    alt="LinkedIn"
-                                    style={{ width: "3em", height: "3em" }}
-                                />
-                            </a>
-                        </div>
-                    </div>
-                </div>
+        <div className={style.footerBasic}>
+            <hr/>
+            <div className={style.social}>
+                <a title="GitHub" href="https://github.com/batukan">
+                    <img
+                        src={github}
+                        alt="GitHub"
+                    />
+                </a>
+                <a title="LinkedIn" href="https://www.linkedin.com/in/emrebatukan/">
+                    <img
+                        src={linkedin}
+                        alt="LinkedIn"
+                    />
+                </a>
             </div>
-        </footer>
+            <footer>
+                <ul className={style["listInline"]}>
+                    <li className={style["listInlineItem"]}>
+                        <Link to="/">
+                            Home
+                        </Link>
+                    </li>
+                    <li className={style["listInlineItem"]}>
+                        <Link to="/blog">
+                            Blog
+                        </Link>
+                    </li>
+                    <li className={style["listInlineItem"]}>
+                        <Link to="/portfolio">
+                            Portfolio
+                        </Link>
+                    </li>
+                    <li className={style["listInlineItem"]}>
+                        <Link to="/contact">
+                            Contact
+                        </Link>
+                    </li>
+                </ul>
+            </footer>
+        </div>
     );
 }

@@ -35,7 +35,17 @@ export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
                 <ul className="taglist">
                   {props.tags.map((tag) => (
                     <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                      <Link 
+                        style={{ 
+                          backgroundColor: `#8bc34a`, 
+                          color: `white`, 
+                          margin: `2px 2px 2px 0px`, 
+                          borderRadius: `2em`, 
+                          borderWidth: `1px`, 
+                          padding: `.4em .5em`  }} 
+                      to={`/tags/${kebabCase(tag)}/`}>
+                        {tag}
+                        </Link>
                     </li>
                   ))}
                 </ul>

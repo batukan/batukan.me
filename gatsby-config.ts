@@ -38,11 +38,10 @@ const config: GatsbyConfig = {
     },
     "gatsby-plugin-react-helmet",
     {
-      resolve: "gatsby-plugin-sass",
+      resolve: `gatsby-plugin-sass`,
       options: {
-        sassOptions: {
-          indentedSyntax: true
-        },
+        sassRuleTest: /\.s(a|c)ss$/,
+        sassRuleModulesTest: /\.module\.s(a|c)ss$/
       },
     },
     {

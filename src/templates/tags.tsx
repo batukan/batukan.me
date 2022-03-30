@@ -5,10 +5,15 @@ import Layout from "../components/Layout";
 
 export default function TagRoute(props: any) {
   const posts = props.data.allMarkdownRemark.edges;
-  const postLinks = posts.map((post) => (
+  const postLinks = posts.map((post, i, row) => (
     <li key={post.node.fields.slug}>
       <Link to={post.node.fields.slug}>
-        <h2 className="is-size-2">{post.node.frontmatter.title}</h2>
+        <h2 className="is-size-2">{post.node.frontmatter.title}
+          {
+            i + 1 !== row.length &&
+            ","
+          }
+        </h2>
       </Link>
     </li>
   ));
