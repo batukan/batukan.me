@@ -6,56 +6,56 @@ const config: GatsbyConfig = {
     siteUrl: `https://batukan.me`
   },
   plugins: [
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-theme-material-ui",
     {
-      resolve: "gatsby-transformer-remark",
-      options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-relative-images",
-            options: {
-              name: "uploads",
-            },
-          },
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              // It's important to specify the maxWidth (in pixels) of
-              // the content container as this plugin uses this as the
-              // base for generating different widths of each image.
-              maxWidth: 2048,
-            },
-          },
-          {
-            resolve: "gatsby-remark-copy-linked-files",
-            options: {
-              destinationDir: "static",
-            },
-          },
-        ],
-      },
-    },
-    "gatsby-plugin-react-helmet",
-    {
-      resolve: `gatsby-plugin-sass`,
+      resolve: "gatsby-plugin-sass",
       options: {
         sassRuleTest: /\.s(a|c)ss$/,
         sassRuleModulesTest: /\.module\.s(a|c)ss$/
       },
     },
     {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              // It's important to specify the maxWidth (in pixels) of
+              // the content container as this plugin uses this as the
+              // base for generating different widths of each image.
+              maxWidth: 2048
+            },
+          },
+          "gatsby-remark-relative-images",
+          {
+            resolve: "gatsby-remark-prismjs",
+            options: {
+              showLineNumbers: true,
+              noInlineHighlight: true
+            }
+          },
+          `gatsby-remark-smartypants`
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
-        "name": "images",
-        "path": "./src/images/"
+        "name": "assets",
+        "path": "./static/assets/"
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         "name": "uploads",
-        "path": "./static/images/"
+        "path": "./static/uploads/"
       }
     },
     {
@@ -65,14 +65,12 @@ const config: GatsbyConfig = {
         "path": "./src/pages/"
       }
     },
-    "gatsby-theme-material-ui",
-    "gatsby-plugin-mdx",
     {
-      resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
+      resolve: 'gatsby-source-filesystem',
       options: {
-        develop: true, // Activates purging in npm run develop
-        purgeOnly: ["/all.sass"], // applies purging only on the bulma css file
-      },
+        "name": "content",
+        "path": "./src/content/"
+      }
     },
     {
       resolve: "gatsby-plugin-netlify-cms",
@@ -102,7 +100,8 @@ const config: GatsbyConfig = {
       options: {
         trackingId: "G-LXGSX8N3GT"
       }
-    }
+    },
+    "gatsby-plugin-fontawesome-css"
   ]
 };
 

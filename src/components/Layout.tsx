@@ -4,6 +4,7 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
+import ScrollUp from "./ScrollUp";
 
 const TemplateWrapper = ({ children }) => {
     const { title, description } = useSiteMetadata();
@@ -17,7 +18,7 @@ const TemplateWrapper = ({ children }) => {
                 <link
                     rel="icon"
                     type="image/png"
-                    href={`${withPrefix("/")}images/favicon-32x32.png`}
+                    href={`${withPrefix("/")}assets/favicon-32x32.png`}
                     sizes="32x32"
                 />
 
@@ -28,11 +29,13 @@ const TemplateWrapper = ({ children }) => {
                 <meta property="og:url" content="/" />
                 <meta
                     property="og:image"
-                    content={`${withPrefix("/")}images/og-image.jpg`}
+                    content={`${withPrefix("/")}assets/og-image.jpg`}
                 />
             </Helmet>
+            
             <div className="site-content">
                 <Navbar />
+                <ScrollUp />
                 <div className="main">{children}</div>
                 <Footer />
             </div>

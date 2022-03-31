@@ -3,22 +3,19 @@ import { kebabCase } from "lodash";
 import { Helmet } from "react-helmet";
 import { graphql, Link } from "gatsby";
 import Layout from "../components/Layout";
-import { HTMLContent, TextContent } from "../components/Content";
 import { Disqus } from 'gatsby-plugin-disqus';
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 interface BlogPostTemplateProps {
-  id: string;
+  id?: string;
   content: string;
-  contentComponent?: React.ComponentType<any>;
   description?: string;
   title?: string;
   helmet?: any;
   tags?: string[];
-  slug: string;
+  slug?: string;
 }
 export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
-  const PostContent = props.contentComponent || TextContent;
-
   return (
     <section className="section">
       {props.helmet}
@@ -28,7 +25,7 @@ export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {props.title}
             </h1>
-            <PostContent content={props.content} />
+            <MDXRenderer>{props.content}</MDXRenderer>
             {props.tags && props.tags.length ? (
               <div style={{ marginTop: `4rem` }}>
                 <h4>Tags</h4>
@@ -51,13 +48,15 @@ export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
                 </ul>
               </div>
             ) : null}
-            <Disqus
-              config={{
-                url: `https://batukan.me/blog/${props.slug}`,
-                identifier: props.id,
-                title: props.title
-              }}
-            />
+            {props.id &&
+              <Disqus
+                config={{
+                  url: props.slug ? `https://batukan.me${props.slug}` : null,
+                  identifier: props.id,
+                  title: props.title
+                }}
+              />
+            }
           </div>
         </div>
       </div>
@@ -66,15 +65,14 @@ export const BlogPostTemplate = (props: BlogPostTemplateProps) => {
 };
 
 export default function BlogPost({ data }) {
-  const post = data.markdownRemark;
+  const post = data.mdx;
 
   return (
     <Layout>
       <BlogPostTemplate
         id={post.id}
         slug={post.fields.slug}
-        content={post.html}
-        contentComponent={HTMLContent}
+        content={post.body}
         description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
@@ -95,9 +93,9 @@ export default function BlogPost({ data }) {
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+    mdx(id: { eq: $id }) {
       id
-      html
+      body
       fields {
         slug
       }

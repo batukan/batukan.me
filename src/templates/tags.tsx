@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
 
 export default function TagRoute(props: any) {
-  const posts = props.data.allMarkdownRemark.edges;
+  const posts = props.data.allMdx.edges;
   const postLinks = posts.map((post, i, row) => (
     <li key={post.node.fields.slug}>
       <Link to={post.node.fields.slug}>
@@ -20,7 +20,7 @@ export default function TagRoute(props: any) {
   
   const tag = props.pageContext.tag;
   const title = props.data.site.siteMetadata.title;
-  const totalCount = props.data.allMarkdownRemark.totalCount;
+  const totalCount = props.data.allMdx.totalCount;
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? "" : "s"
   } tagged with “${tag}”`;
@@ -55,7 +55,7 @@ export const tagPageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
+    allMdx(
       limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }

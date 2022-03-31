@@ -1,7 +1,8 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import { HTMLContent } from "../components/Content";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+import { Helmet } from "react-helmet";
 
 interface PortfolioPageTemplateProps {
   title: string;
@@ -9,18 +10,19 @@ interface PortfolioPageTemplateProps {
   contentComponent?: React.ComponentType<any>;
 }
 export function PortfolioPageTemplate (props: PortfolioPageTemplateProps) {
-  const PageContent = props.contentComponent || HTMLContent;
-
   return (
     <section className="section section--gradient">
+      <Helmet>
+        <title>{props.title} - Emre Batukan</title>
+      </Helmet>
       <div className="container">
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <div className="section">
+            <div className="section content">
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
                 {props.title}
               </h2>
-              <PageContent className="content" content={props.content} />
+              <MDXRenderer>{props.content}</MDXRenderer>
             </div>
           </div>
         </div>
@@ -30,14 +32,13 @@ export function PortfolioPageTemplate (props: PortfolioPageTemplateProps) {
 };
 
 export default function PortfolioPage ({ data }) {
-  const { markdownRemark: post } = data;
+  const { mdx: post } = data;
 
   return (
     <Layout>
       <PortfolioPageTemplate
         title={post.frontmatter.title}
-        content={post.html}
-        contentComponent={HTMLContent}
+        content={post.body}
       />
     </Layout>
   );
@@ -45,8 +46,8 @@ export default function PortfolioPage ({ data }) {
 
 export const PortfolioPageQuery = graphql`
   query PortfolioPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
+    mdx(id: { eq: $id }) {
+      body
       frontmatter {
         title
       }

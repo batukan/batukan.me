@@ -51,7 +51,7 @@ export function IndexPageTemplate(props: IndexPageTemplateProps) {
 };
 
 export default function IndexPage({ data }) {
-  const { frontmatter } = data.markdownRemark;
+  const { frontmatter } = data.mdx;
 
   return (
     <Layout>
@@ -64,7 +64,7 @@ export default function IndexPage({ data }) {
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+    mdx(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
         mainpitch {
           title

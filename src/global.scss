@@ -77,6 +77,7 @@ $body-color: #333;
 .navbar-brand .navbar-item.logo {
   padding: 0 1rem;
 }
+
 //Menu overrides
 $menu-item-color: $white-ter;
 $menu-item-hover-color: $black !important;
@@ -85,7 +86,6 @@ $menu-item-active-color: $primary-invert;
 $menu-item-active-background-color: $primary-invert;
 $menu-list-border-left: 1px solid $primary-invert;
 $menu-label-color: $white-ter;
-
 
 .menu-label {
   font-size: 1em !important;
@@ -129,4 +129,61 @@ $menu-label-color: $white-ter;
     max-width: 70%;
     margin: 0 0 1em;
   }
+}
+
+
+.number {
+  align-items: revert;
+  background-color: revert; 
+  border-radius: revert; 
+  display: revert; 
+  font-size: revert; 
+  height: revert; 
+  justify-content: revert; 
+  margin-right: revert; 
+  min-width: revert; 
+  padding: revert; 
+  text-align: revert; 
+  vertical-align: revert; 
+}
+
+.gatsby-highlight pre[class*="language-"].line-numbers {
+  padding-left: 2.8em;
+}
+
+/**
+ * If you only want to use line numbering
+ */
+
+.gatsby-highlight {
+  background-color: #fdf6e3;
+  border-radius: 0.3em;
+  margin: 0.5em 0;
+  padding: 1em;
+  overflow: auto;
+}
+
+.gatsby-highlight pre[class*="language-"].line-numbers {
+  padding: 0;
+  padding-left: 2.8em;
+  overflow: initial;
+}
+
+.command-line-prompt > span:before {
+  color: #999;
+  content: " ";
+  display: block;
+  padding-right: 0.8em;
+}
+
+.command-line-prompt > span[data-user]:before {
+  content: "[" attr(data-user) "@" attr(data-host) "] $";
+}
+
+.command-line-prompt > span[data-user="root"]:before {
+  content: "[" attr(data-user) "@" attr(data-host) "] #";
+}
+
+.command-line-prompt > span[data-prompt]:before {
+  content: attr(data-prompt);
 }

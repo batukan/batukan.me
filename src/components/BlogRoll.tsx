@@ -49,7 +49,7 @@ export function BlogPostPreview(props: any) {
 
 export function BlogRollTemplate(props: any) {
     const { data } = props;
-    const { edges: posts } = data.allMarkdownRemark;
+    const { edges: posts } = data.allMdx;
 
     return (
         <div className="columns is-multiline">
@@ -66,7 +66,7 @@ export default function BlogRoll() {
         <StaticQuery
             query={graphql`
                 query BlogRollQuery {
-                    allMarkdownRemark(
+                    allMdx(
                         sort: { order: DESC, fields: [frontmatter___date] }
                         filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
                     ) {

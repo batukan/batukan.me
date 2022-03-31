@@ -2,8 +2,8 @@ import * as React from "react";
 import { Link } from "gatsby";
 import * as style from "./Footer.module.scss";
 
-import github from "../images/social/github.svg";
-import linkedin from "../images/social/linkedin.svg";
+import github from "../../static/assets/social/github.svg";
+import linkedin from "../../static/assets/social/linkedin.svg";
 
 export default function Footer() {
     return (
